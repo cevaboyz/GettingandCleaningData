@@ -56,8 +56,74 @@ assembled[nrow(assembled),1] == trainds[nrow(trainds),1]
 
 testmovesds <- read.csv("./test/y_test.txt", sep = "", header = FALSE)
 
+trainmovesds <- read.csv("./train/y_train.txt", sep = "", header = FALSE)
+
+#these new two data sets represent the type of movements expressed by the 
+#activity label from 1 to 6 
+#1 WALKING
+#2 WALKING_UPSTAIRS
+#3 WALKING_DOWNSTAIRS
+#4 SITTING
+#5 STANDING
+#6 LAYING
+
+#now we can row bind the movements, test and train, in a unique data set
+
+assembledmoves <- rbind(testmovesds, trainmovesds)
+
+#we will check if the last row of the new merged dataset is equal to the last 
+#of the trainmovesds data set
+
+assembledmoves[nrow(assembledmoves),1] == trainmovesds[nrow(trainmovesds),1]
+
+#TRUE
+
+#now we have to import the subject_test.txt for the test and train datas
+#this file contains the identification ID for the people whose movements were
+#collected
+
+testdsID <- read.csv("./test/subject_test.txt", sep = "", header = FALSE)
+
+traindsID <- read.csv("./train/subject_train.txt", sep = "", header = FALSE)
+
+assembledID <- rbind(testdsID, traindsID)
+
+#we will check if the last row of the new merged dataset is equal to the last 
+#of the traindsID data set
+
+assembledID[nrow(assembledID),1] == traindsID[nrow(traindsID),1]
+
+#now we can apply the feature vector to the assembled data set, we will 
+#change the default Column Names of the assembled data set with the elements
+#in the feature vector
+
+names(assembled) <- features[,1]
+
+#now that the assembled data set has the proper label for each column we can
+#extract only the columns with the mean and standard deviation measurements
+
+assembledMean_std_only <- assembled[grepl("mean|std", names(assembled), ignore.case = TRUE)]
 
 
+#we have made a new data set, from with only the mean and std measurements and 
+#we are going to merge the assembledmoves data set to the activities in order
+#to obtain descriptive names aka "WALKING" etc..
+
+assembledmoves <- merge(assembledmoves, activity, by.x = "V1", by.y = "V1")
+
+#we don't need the number of the activity due to the presence of the extended
+#written form 
+
+assembledmoves <- assembledmoves[2]
+
+#we can now apply to the assembledMean_std_only the cbind function and add the 
+#descriptive columns about the person ID and movement to the data set
+
+assembledMean_std_only <- cbind(assembledID, assembledmoves, assembledMean_std_only)
+
+#we can now rename the first two columns with descriptive names: PersonalID and Movement 
+
+names(assembledMean_std_only)[1:2] <- c("PersonalID", "Movement")
 
 
 
