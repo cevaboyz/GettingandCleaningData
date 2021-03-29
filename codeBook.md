@@ -241,3 +241,6 @@ Any commercial use is prohibited.
 November 2012.
  
 ***
+## Description of the processes which are performed by the runAnalysis.R
+
+
