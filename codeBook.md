@@ -11,8 +11,8 @@ The following table describes all variables of the 'tidyData.csv' table.
  
 | Index |           Variables          |  Class  |  Range  | Description                                                                                               |
 |-------|------------------------------| --------|---------|-----------------------------------------------------------------------------------------------------------|
-|    1  | subject                      | integer |  1 - 30 | Identifies the human subject.                                                                             |
-|    2  | activity                     | factor  |  1 -  6 | Identifies the activity. Labels: WALKING, WALKING UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING |
+|    1  | PersonalID	                  | integer |  1 - 30 | Identifies the human subject.                                                                             |
+|    2  | Movement                     | factor  |  1 -  6 | Identifies the activity. Labels: WALKING, WALKING UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING |
 |    3  | Avrg-tBodyAcc-mean()-X       | numeric | [-1, 1] | Time domain, Average of means for body acceleration on X axis.                                            |
 |    4  | Avrg-tBodyAcc-mean()-Y       | numeric | [-1, 1] | Time domain, Average of means for body acceleration on Y axis.                                            |
 |    5  | Avrg-tBodyAcc-mean()-Z       | numeric | [-1, 1] | Time domain, Average of means for body acceleration on Z axis.                                            |
