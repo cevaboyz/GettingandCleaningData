@@ -142,17 +142,3 @@ final <- group_by(assembledMean_std_only, PersonalID, Movement) %>% summarise_ea
 write.table(final, "tds.txt", row.names = FALSE)
 
 write.csv(final, "tds1.csv", row.names = FALSE)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
