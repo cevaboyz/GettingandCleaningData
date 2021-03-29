@@ -137,8 +137,8 @@ library(dplyr)
 
 final <- group_by(assembledMean_std_only, PersonalID, Movement) %>% summarise_each(funs(mean))
 
-#we are now going to generate a new file with the final data set
+#we are now going to generate a new file with the final data sets both in .txt and .cvs
 
-write.table(final, "tds.txt", row.names = FALSE)
+write.table(final, "tidydata.txt", row.names = FALSE)
 
-write.csv(final, "tds1.csv", row.names = FALSE)
+write.csv(final, "tidyData.csv", row.names = FALSE)
