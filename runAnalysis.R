@@ -1,4 +1,3 @@
-
 #Installing the Packages that are going to be used for the assignment
 
 install.packages("data.table")
@@ -127,6 +126,9 @@ names(assembledMean_std_only)[1] <- paste("PersonalID")
 names(assembledMean_std_only)[2] <- paste("Movement")
 
 #now we can use the dplyr function group_by to obtain a tidy data set 
+#remove the column 1 and 2 
+
+assembledMean_std_only <- subset(assembledMean_std_only, select = -c(1:2))
 
 library(dplyr)
 
