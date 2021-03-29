@@ -123,7 +123,26 @@ assembledMean_std_only <- cbind(assembledID, assembledmoves, assembledMean_std_o
 
 #we can now rename the first two columns with descriptive names: PersonalID and Movement 
 
-names(assembledMean_std_only)[1:2] <- c("PersonalID", "Movement")
+names(assembledMean_std_only)[1] <- paste("PersonalID")
+names(assembledMean_std_only)[2] <- paste("Movement")
+
+#now we can use the dplyr function group_by to obtain a tidy data set 
+
+library(dplyr)
+
+#we are going to group by personalID and Movement and summarise each column 
+#applying the mean function to obtain the average of each variable for each variable
+
+final <- group_by(assembledMean_std_only, PersonalID, Movement) %>% summarise_each(funs(mean))
+
+#we are now going to generate a new file with the final data set
+
+write.table(final, "tds.txt", row.names = FALSE)
+
+write.csv(final, "tds1.csv", row.names = FALSE)
+
+
+
 
 
 
