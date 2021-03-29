@@ -203,7 +203,7 @@ and also it include the following notes:
 
 ### About the original dataset 
  
-The 'tidy_data_summary' table was created by using the following data set: 
+The 'tidyData.csv' table was created by using the following data set: 
  
 > Human Activity Recognition Using Smartphones Dataset Version 1.0 
 >  
